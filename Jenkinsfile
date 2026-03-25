@@ -25,7 +25,7 @@ pipeline {
         }
 
         stage('Deploy') {
-            when { params.RUN_DEPLOY }
+            when { expression { params.RUN_DEPLOY } }
             steps {
                 sh '''
                 docker rm -f $APP_NAME || true
