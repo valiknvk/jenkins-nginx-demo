@@ -1,9 +1,11 @@
 pipeline {
     agent any
-
+    parameters {
+        string(name: 'APP_PORT', defaultValue: '', description: 'Override port (optional)')
+    }
     environment {
         APP_NAME = 'jenkins-nginx-demo'
-        APP_PORT = '8081'
+        APP_PORT = "${params.APP_PORT ?: '8081'}"
     }
 
     stages {
